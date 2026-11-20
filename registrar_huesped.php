@@ -10,5 +10,6 @@ $telefono = $_POST['telefono'];
 $sql = "INSERT INTO Huespedes (ci_ruc, nombre, apellido, email, telefono) VALUES (?, ?, ?, ?, ?)";
 $pdo->prepare($sql)->execute([$ci_ruc, $nombre, $apellido, $email, $telefono]);
 
-echo "Huésped registrado con éxito. <a href='index.html'>Volver al inicio</a>";
+header("Refresh: 3; url=index.html");
+echo "<link rel='stylesheet' href='estilos.css'><h3>✅ Huésped registrado con éxito.</h3><p>Volviendo al inicio...</p>";
 ?>

@@ -2,9 +2,19 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
     color: #333;
-    max-width: 550px;
-    margin: 30px auto;
+    max-width: 1050px;
+    margin: 20px auto;
     padding: 20px;
+}
+
+.contenedor {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.columna {
+    flex: 1;
 }
 
 form, table {

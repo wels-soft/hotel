@@ -12,5 +12,6 @@ $pdo->prepare($sql)->execute([$huesped_id, $habitacion_id, $noches]);
 // 2. Marcar habitación como no disponible (0)
 $pdo->prepare("UPDATE Habitaciones SET disponible = 0 WHERE habitacion_id = ?")->execute([$habitacion_id]);
 
-echo "Reserva creada por $noches noches. <a href='index.html'>Volver al inicio</a>";
+header("Refresh: 3; url=index.html");
+echo "<link rel='stylesheet' href='estilos.css'><h3>✅ Reserva creada por $noches noches.</h3><p>Volviendo al inicio...</p>";
 ?>
