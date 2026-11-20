@@ -1,13 +1,8 @@
 <?php
 require 'conexion.php';
 
-function obtenerHabitacionesDisponibles($pdo) {
-    $sql = "SELECT * FROM Habitaciones WHERE disponible = 1";
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+$habitaciones = $pdo->query("SELECT * FROM Habitaciones WHERE disponible = 1")->fetchAll(PDO::FETCH_ASSOC);
+$total = count($habitaciones);
 
-// Ejemplo de uso:
-// $habitaciones = obtenerHabitacionesDisponibles($pdo);
-// foreach($habitaciones as $hab) echo $hab['numero'] . " - " . $hab['tipo'];
+require 'vista_habitaciones.php';
 ?>

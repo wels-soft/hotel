@@ -1,13 +1,8 @@
 <?php
 $host = 'localhost';
-$dbname = 'hotel_db';
-$username = 'root';
-$password = '';
+$db   = 'u953442791_hotel'; // Tu base de datos de Hostinger
+$user = 'u953442791_hotel'; // Tu usuario de Hostinger
+$pass = 'Hoteleria.2026'; // Tu contraseña
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
-}
+$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 ?>

@@ -1,13 +1,14 @@
 <?php
 require 'conexion.php';
 
-function registrarHuesped($pdo, $nombre, $apellido, $email, $telefono) {
-    $sql = "INSERT INTO Huespedes (nombre, apellido, email, telefono) VALUES (?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nombre, $apellido, $email, $telefono]);
-    return $pdo->lastInsertId();
-}
+$ci_ruc   = $_POST['ci_ruc'];
+$nombre   = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$email    = $_POST['email'];
+$telefono = $_POST['telefono'];
 
-// Ejemplo de uso:
-// $id_nuevo = registrarHuesped($pdo, 'Juan', 'Pérez', 'juan@email.com', '555-1234');
+$sql = "INSERT INTO Huespedes (ci_ruc, nombre, apellido, email, telefono) VALUES (?, ?, ?, ?, ?)";
+$pdo->prepare($sql)->execute([$ci_ruc, $nombre, $apellido, $email, $telefono]);
+
+echo "Huésped registrado con éxito. <a href='index.html'>Volver al inicio</a>";
 ?>
