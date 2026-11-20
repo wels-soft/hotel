@@ -12,14 +12,21 @@ body {
     margin-bottom: 25px;
 }
 
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 .contenedor {
     display: flex;
     gap: 30px;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 .columna {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 form, table {
@@ -27,7 +34,8 @@ form, table {
     padding: 15px 20px;
     border-radius: 6px;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    flex: 1;
 }
 
 input {
@@ -57,7 +65,7 @@ button {
 }
 
 .btn-registro {
-    background-color: #c53030; /* Rojo para registro/ocupar */
+    background-color: #c53030;
 }
 
 .btn-registro:hover {
@@ -65,7 +73,7 @@ button {
 }
 
 .btn-reserva {
-    background-color: #dd6b20; /* Naranja para reserva */
+    background-color: #dd6b20;
 }
 
 .btn-reserva:hover {
@@ -78,7 +86,7 @@ table {
 }
 
 th, td {
-    padding: 10px;
+    padding: 14px 10px;
     text-align: left;
     border-bottom: 1px solid #eee;
 }
