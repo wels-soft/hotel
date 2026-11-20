@@ -3,52 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Control del Hotel</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos.css?v=2">
 </head>
 <body>
 
-    <h1>Control del Hotel</h1>
+    <h1 class="titulo-centro">Control de Hotel</h1>
 
     <div class="contenedor">
-        <!-- Columna Izquierda: Formularios -->
+        <!-- Columna Izquierda: Formulario Único -->
         <div class="columna">
-            <h2>1. Registrar Huésped</h2>
-            <form action="registrar_huesped.php" method="POST">
+            <h2>Formulario de Registro / Reserva</h2>
+            <form action="procesar.php" method="POST">
                 <p>Cédula / RUC: <input type="text" name="ci_ruc" required></p>
                 <p>Nombre: <input type="text" name="nombre" required></p>
                 <p>Apellido: <input type="text" name="apellido" required></p>
                 <p>Email: <input type="email" name="email"></p>
                 <p>Teléfono: <input type="text" name="telefono"></p>
-                <button type="submit">Guardar Huésped</button>
-            </form>
-
-            <h2>2. Crear Reserva</h2>
-            <form action="crear_reserva.php" method="POST">
-                <p>ID del Huésped: <input type="number" name="huesped_id" required></p>
-                <p>ID de la Habitación: <input type="number" name="habitacion_id" required></p>
+                <p># Número de Habitación: <input type="number" name="numero_habitacion" placeholder="Ej: 101" required></p>
                 <p>Cantidad de Noches: <input type="number" name="noches" required></p>
-                <button type="submit">Reservar Habitación</button>
+
+                <div class="botones">
+                    <button type="submit" name="accion" value="registro" class="btn-registro">Registro (Ocupar)</button>
+                    <button type="submit" name="accion" value="reserva" class="btn-reserva">Reserva</button>
+                </div>
             </form>
         </div>
 
-        <!-- Columna Derecha: Pizarra de Habitaciones -->
+        <!-- Columna Derecha: Tabla de Habitaciones -->
         <div class="columna">
-            <h2>Pizarra de Habitaciones (Libres: <?= $libres ?>)</h2>
+            <h2>Habitaciones (Libres: <?= $libres ?>)</h2>
             <table>
                 <tr>
-                    <th>ID</th>
-                    <th>Número</th>
+                    <th># Habitación</th>
                     <th>Tipo</th>
                     <th>Precio</th>
                     <th>Estado</th>
                 </tr>
                 <?php foreach ($habitaciones as $hab): ?>
                 <tr>
-                    <td><?= $hab['habitacion_id'] ?></td>
                     <td><?= $hab['numero'] ?></td>
                     <td><?= $hab['tipo'] ?></td>
                     <td>$<?= $hab['precio'] ?></td>
-                    <td><?= $hab['disponible'] ? '🟢 Libre' : '🔴 Ocupada' ?></td>
+                    <td>
+                        <?php
+                            if ($hab['disponible'] == 1) echo '🟢 Libre';
+                            elseif ($hab['disponible'] == 2) echo '🟠 Reservada';
+                            else echo '🔴 Ocupada';
+                        ?>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </table>
